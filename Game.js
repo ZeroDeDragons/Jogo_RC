@@ -82,21 +82,21 @@ function preload() {
     var url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
     this.load.plugin('rexvirtualjoystickplugin', url, true);
 
-    this.load.spritesheet("plataformaC", "jogo_1/plataformaC.png", { frameWidth: 33, frameHeight: 14 });
-    this.load.image("Poste", "jogo_1/00.png");
-    this.load.image("CoisaPoste", "jogo_1/11.png");
-    this.load.image("PePoste", "jogo_1/04.png");
-    this.load.image("Arvores1", "jogo_1/Land_1.png");
-    this.load.image("Arvores2", "jogo_1/Land_2.png");
-    this.load.image("Arvores3", "jogo_1/Trees.png");
-    this.load.image("sky", "jogo_1/sky.png");
-    this.load.image("stars", "jogo_1/stars.png");
-    this.load.image("Canhao1", "jogo_1/CanhaoC1.png");
-    this.load.image("CanhaoB", "jogo_1/CanhaoB1.png");
+    this.load.spritesheet("plataformaC", "Jogo_1/plataformaC.png", { frameWidth: 33, frameHeight: 14 });
+    this.load.image("Poste", "Jogo_1/00.png");
+    this.load.image("CoisaPoste", "Jogo_1/11.png");
+    this.load.image("PePoste", "Jogo_1/04.png");
+    this.load.image("Arvores1", "Jogo_1/Land_1.png");
+    this.load.image("Arvores2", "Jogo_1/Land_2.png");
+    this.load.image("Arvores3", "Jogo_1/Trees.png");
+    this.load.image("sky", "Jogo_1/sky.png");
+    this.load.image("stars", "Jogo_1/stars.png");
+    this.load.image("Canhao1", "Jogo_1/CanhaoC1.png");
+    this.load.image("CanhaoB", "Jogo_1/CanhaoB1.png");
     
-    this.load.spritesheet("parado", "jogo_1/parado.png", { frameWidth: 29, frameHeight: 32 });
-    this.load.spritesheet("correndo", "jogo_1/correr.png", { frameWidth: 32, frameHeight: 32 });
-    this.load.spritesheet("pularcima", "jogo_1/pularCima.png", { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet("parado", "Jogo_1/parado.png", { frameWidth: 29, frameHeight: 32 });
+    this.load.spritesheet("correndo", "Jogo_1/correr.png", { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet("pularcima", "Jogo_1/pularCima.png", { frameWidth: 32, frameHeight: 32 });
 }
 
 function create() {
