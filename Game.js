@@ -96,7 +96,7 @@ function preload() {
     
     this.load.spritesheet("parado", "Jogo_1/parado.png", { frameWidth: 29, frameHeight: 32 });
     this.load.spritesheet("correndo", "Jogo_1/correr.png", { frameWidth: 32, frameHeight: 32 });
-    this.load.spritesheet("pularcima", "Jogo_1/pularcima.png", { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet("pularCima", "Jogo_1/pularcima.png", { frameWidth: 32, frameHeight: 32 });
 }
 
 function create() {
