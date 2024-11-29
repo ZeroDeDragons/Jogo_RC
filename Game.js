@@ -137,7 +137,7 @@ function create() {
     ///////////////////////////////////////
     // Certifique-se de adicionar o joystick corretamente
     joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
-        x: 300,  // Posição inicial do joystick
+        x: 100,  // Posição inicial do joystick
         y: 300,
         radius: 100,
         enable: true
