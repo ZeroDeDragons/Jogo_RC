@@ -45,13 +45,13 @@ function checkJoystickDirection(joystick, player) {
     console.log(`Delta X: ${deltaX}, Delta Y: ${deltaY}, center Y: ${centerX}`);
 
     // Verifique a direção com base na posição
-    if (deltaX > 0) {  // Para a direita
+    if (deltaX > joyStickX) {  // Para a direita
         player.body.velocity.x = ptvelocidade;
         player.flipX = false; 
         if (player.body.touching.down) {
             player.anims.play("Correr", true);
         }
-    } else if (deltaX < 0) {  // Para a esquerda
+    } else if (deltaX < joyStickX) {  // Para a esquerda
         player.body.velocity.x = -ptvelocidade;
         player.flipX = true; 
         if (player.body.touching.down) {
@@ -64,7 +64,7 @@ function checkJoystickDirection(joystick, player) {
         }
     }
 
-    if (deltaY < 0 && player.body.touching.down) {  // Para cima (pular)
+    if (deltaY < joyStickY && player.body.touching.down) {  // Para cima (pular)
         player.body.velocity.y = puloalt;  // Ajuste o pulo
         player.anims.play("pularcima", true);
     }
