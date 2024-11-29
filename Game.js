@@ -5,7 +5,7 @@ import { createInimigos  } from "./inimigo.js";
 import { createMovimentoPlayer  } from "./Movimento_Player.js";
 var X = 800, Y = 400, ptvelocidade = 200;
 // Variável de joystick declarada globalmente para ser usada nas funções
-var joyStick, print;
+var joyStick, print, joyStickX = 0, joyStickY = 300;
 
 const config = {
     type: Phaser.AUTO,
@@ -36,12 +36,8 @@ new Phaser.Game(config);
 //////////////////////////////////////////////////////////////////////
 
 function checkJoystickDirection(joystick, player) {
-    
-
-    var centerX = 300; // Posição inicial de X do joystick
-    var centerY = 300; // Posição inicial de Y do joystick
-    var deltaX = joyStick.thumb.x - centerX;
-    var deltaY = joyStick.thumb.y - centerY;
+    var deltaX = joyStick.thumb.x - joyStickX;
+    var deltaY = joyStick.thumb.y - joyStickY;
     var puloalt = -200;
 
     // Imprimir as coordenadas para depuração
@@ -137,8 +133,8 @@ function create() {
     ///////////////////////////////////////
     // Certifique-se de adicionar o joystick corretamente
     joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
-        x: 100,  // Posição inicial do joystick
-        y: 0,
+        x: joyStickX,  // Posição inicial do joystick
+        y: joyStickY,
         radius: 100,
         enable: true
     });
