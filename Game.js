@@ -5,7 +5,7 @@ import { createInimigos  } from "./inimigo.js";
 import { createMovimentoPlayer  } from "./Movimento_Player.js";
 var X = 800, Y = 400, ptvelocidade = 200;
 // Variável de joystick declarada globalmente para ser usada nas funções
-var joyStick, print, joyStickX = 0, joyStickY = 300;
+var joyStick, print;
 
 const config = {
     type: Phaser.AUTO,
@@ -36,8 +36,12 @@ new Phaser.Game(config);
 //////////////////////////////////////////////////////////////////////
 
 function checkJoystickDirection(joystick, player) {
-    var deltaX = joyStick.thumb.x - joyStickX;
-    var deltaY = joyStick.thumb.y - joyStickY;
+    
+
+    var centerX = 300; // Posição inicial de X do joystick
+    var centerY = 300; // Posição inicial de Y do joystick
+    var deltaX = joyStick.thumb.x - centerX;
+    var deltaY = joyStick.thumb.y - centerY;
     var puloalt = -200;
 
     // Imprimir as coordenadas para depuração
@@ -45,13 +49,13 @@ function checkJoystickDirection(joystick, player) {
     console.log(`Delta X: ${deltaX}, Delta Y: ${deltaY}, center Y: ${centerX}`);
 
     // Verifique a direção com base na posição
-    if (deltaX > joyStickX) {  // Para a direita
+    if (deltaX > 0) {  // Para a direita
         player.body.velocity.x = ptvelocidade;
         player.flipX = false; 
         if (player.body.touching.down) {
             player.anims.play("Correr", true);
         }
-    } else if (deltaX < joyStickX) {  // Para a esquerda
+    } else if (deltaX < 0) {  // Para a esquerda
         player.body.velocity.x = -ptvelocidade;
         player.flipX = true; 
         if (player.body.touching.down) {
@@ -64,7 +68,7 @@ function checkJoystickDirection(joystick, player) {
         }
     }
 
-    if (deltaY < joyStickY && player.body.touching.down) {  // Para cima (pular)
+    if (deltaY < 0 && player.body.touching.down) {  // Para cima (pular)
         player.body.velocity.y = puloalt;  // Ajuste o pulo
         player.anims.play("pularcima", true);
     }
@@ -78,21 +82,21 @@ function preload() {
     var url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
     this.load.plugin('rexvirtualjoystickplugin', url, true);
 
-    this.load.spritesheet("plataformaC", "Jogo_1/plataformaC.png", { frameWidth: 33, frameHeight: 14 });
-    this.load.image("Poste", "Jogo_1/00.png");
-    this.load.image("CoisaPoste", "Jogo_1/11.png");
-    this.load.image("PePoste", "Jogo_1/04.png");
-    this.load.image("Arvores1", "Jogo_1/Land_1.png");
-    this.load.image("Arvores2", "Jogo_1/Land_2.png");
-    this.load.image("Arvores3", "Jogo_1/Trees.png");
-    this.load.image("sky", "Jogo_1/Sky.png");
-    this.load.image("stars", "Jogo_1/Stars.png");
-    this.load.image("Canhao1", "Jogo_1/CanhaoC1.png");
-    this.load.image("CanhaoB", "Jogo_1/CanhaoB1.png");
+    this.load.spritesheet("plataformaC", "jogo_1/plataformaC.png", { frameWidth: 33, frameHeight: 14 });
+    this.load.image("Poste", "jogo_1/00.png");
+    this.load.image("CoisaPoste", "jogo_1/11.png");
+    this.load.image("PePoste", "jogo_1/04.png");
+    this.load.image("Arvores1", "jogo_1/Land_1.png");
+    this.load.image("Arvores2", "jogo_1/Land_2.png");
+    this.load.image("Arvores3", "jogo_1/Trees.png");
+    this.load.image("sky", "jogo_1/sky.png");
+    this.load.image("stars", "jogo_1/stars.png");
+    this.load.image("Canhao1", "jogo_1/CanhaoC1.png");
+    this.load.image("CanhaoB", "jogo_1/CanhaoB1.png");
     
-    this.load.spritesheet("parado", "Jogo_1/parado.png", { frameWidth: 29, frameHeight: 32 });
-    this.load.spritesheet("correndo", "Jogo_1/correr.png", { frameWidth: 32, frameHeight: 32 });
-    this.load.spritesheet("pularCima", "Jogo_1/pularcima.png", { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet("parado", "jogo_1/parado.png", { frameWidth: 29, frameHeight: 32 });
+    this.load.spritesheet("correndo", "jogo_1/correr.png", { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet("pularcima", "jogo_1/pularCima.png", { frameWidth: 32, frameHeight: 32 });
 }
 
 function create() {
@@ -133,8 +137,8 @@ function create() {
     ///////////////////////////////////////
     // Certifique-se de adicionar o joystick corretamente
     joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
-        x: joyStickX,  // Posição inicial do joystick
-        y: joyStickY,
+        x: 300,  // Posição inicial do joystick
+        y: 300,
         radius: 100,
         enable: true
     });
